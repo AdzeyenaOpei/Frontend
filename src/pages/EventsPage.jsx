@@ -35,19 +35,19 @@ export default function EventsPage() {
               className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow"
             >
               <h2 className="text-xl font-bold mb-2 text-gray-800">
-                {event.title}
+                {event.event_name}
               </h2>
               <p className="text-sm text-gray-600">
-                <strong>Date:</strong> {event.date}
+                <strong>Date:</strong> {event.event_date.split('T')[0]}
               </p>
               <p className="text-sm text-gray-600">
-                <strong>Time:</strong> {event.time}
+                <strong>Time:</strong> {event.event_time}
               </p>
               <p className="text-sm text-gray-600">
                 <strong>Location:</strong> {event.location}
               </p>
               <p className="text-sm text-gray-600">
-                <strong>Available Seats:</strong> {event.availableSeats || "N/A"}
+                <strong>Available Seats:</strong> {event.available_seats || "N/A"}
               </p>
               <Link to={`/event/${event.id}`}>
                 <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg w-full hover:bg-blue-700">

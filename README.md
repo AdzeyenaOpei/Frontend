@@ -1,37 +1,46 @@
-# EventoEMS - Event Management System
+# CampusConnect - Campus Event Management System
 
 ## Project Overview
-EventoEMS is a comprehensive event management system designed for campus events. The platform enables users to create, manage, and participate in various campus events with features like event scheduling, ticket booking, and QR code-based verification.
+CampusConnect is a versatile platform for managing campus events with ease. It includes features like event scheduling, RSVP, event creation and real-time updates, ensuring seamless organization and participation. From club meetings to cultural festivals, CampusConnect simplifies event management and enhances campus engagement.
+
+
+##Frontend Repository On Github
+- **Frontend Repository**: [https://github.com/AdzeyenaOpei/Frontend](https://github.com/AdzeyenaOpei/Frontend)
 
 ## Deployment Links
-- Frontend Application: [https://evento-ems.vercel.app](https://evento-ems.vercel.app)
-- Supabase Backend: [https://supabase.com/dashboard/project/evento-ems](https://supabase.com/dashboard/project/evento-ems)
+- **Frontend Application**: [https://frontend-xi-blush-60.vercel.app/](https://frontend-xi-blush-60.vercel.app/)
+- **Supabase Backend**: [https://backend-rux4.onrender.com](https://backend-rux4.onrender.com)
 
 ## Test Login Credentials
 ```
-Email: test@example.com
-Password: Test123!
+## Admin
+Email: Kobina@example.com
+Password: kobina
+```
+## User
+Email: Arnold@example.com
+Password: arnold
 ```
 
 ## Feature Checklist
-✅ User Authentication
+### User Authentication
   - [x] Login/Register functionality
   - [x] Remember Me option
   - [x] Password recovery
 
-✅ Event Management
+### Event Management
   - [x] Create new events
   - [x] Edit existing events
   - [x] Delete events
   - [x] View event details
 
-✅ Ticket System
+### Ticket System
   - [x] Book tickets
   - [x] Generate QR codes
   - [x] View booking history
   - [x] Cancel bookings
 
-✅ Admin Features
+### Admin Features
   - [x] Event approval system
   - [x] User management
   - [x] Analytics dashboard
@@ -42,6 +51,23 @@ Password: Test123!
 - Node.js (v14 or higher)
 - npm
 - Git
+
+### API Testing Screenshots
+![Login API Tests](./Api-Images/Login.png.png)
+![Register API Tests](./Api-Images/Register.png)
+
+### Event Management Endpoints
+![Create Event Test](./Api-Images/CreateEvent.png)
+
+### User Management Endpoints
+![Get User Events Test](path-to-register-endpoints-screenshot.png)
+
+
+
+## Installation Instructions
+- Git
+- Node.js
+- Supabase
 
 ### Local Setup
 1. Clone the repository

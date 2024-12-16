@@ -27,7 +27,7 @@ export default function LoginPage() {
 
     try {
       const { data } = await axios.post("/login", { email, password });
-      setUser(data);
+      setUser(data.user);
       toast.success("Login successful!");
       if (rememberMe) {
         localStorage.setItem("rememberedEmail", email);
@@ -93,9 +93,7 @@ export default function LoginPage() {
               />
               <span className="ml-2 text-gray-700">Remember Me</span>
             </label>
-            <Link to="/forgotpassword" className="text-sm text-blue-600 hover:underline">
-              Forgot Password?
-            </Link>
+        
           </div>
 
           <div className="mt-6">

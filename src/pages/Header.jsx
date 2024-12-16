@@ -12,9 +12,8 @@ export default function Header() {
 
   const isAdmin = user?.role === "admin";
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     try {
-      await axios.post("/logout");
       setUser(null);
       toast.success("Logged out successfully!");
     } catch (error) {
@@ -71,14 +70,7 @@ export default function Header() {
               <div className="relative">
                 {/* User Menu */}
                 <div className="flex items-center space-x-4">
-                  {/* Notifications */}
-                  <button className="relative p-2 hover:bg-purple-600 rounded-full transition-colors">
-                    <FaBell />
-                    <span className="absolute top-0 right-0 bg-red-500 text-xs w-4 h-4 rounded-full flex items-center justify-center">
-                      3
-                    </span>
-                  </button>
-
+                  
                   {/* User Dropdown */}
                   <div className="relative">
                     <button

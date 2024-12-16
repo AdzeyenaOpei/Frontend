@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white">EventHub</h3>
+            <h3 className="text-2xl font-bold text-white">CampusConnect</h3>
             <p className="text-gray-400">
-              Making event planning and management easier for everyone.
+             Simplifying event planning and management for everyone.
             </p>
             {/* Social Links */}
             <div className="flex space-x-4 pt-2">
@@ -41,16 +41,6 @@ export default function Footer() {
                   Events
                 </Link>
               </li>
-              <li>
-                <Link to="/about" className="hover:text-white transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -58,10 +48,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-white">Contact Us</h4>
             <div className="space-y-2 text-gray-400">
-              <p>1234 Event Street</p>
-              <p>San Francisco, CA 94105</p>
-              <p>Email: info@eventhub.com</p>
-              <p>Phone: (555) 123-4567</p>
+              <p>P.O.Box AD 42</p>
+              <p>Adabraka, Accra</p>
+              <p>Email: opeiadzeyena123@gmail.com</p>
             </div>
           </div>
         </div>
@@ -74,19 +63,8 @@ export default function Footer() {
             <div className="flex items-center space-x-2">
               <FaCopyright className="text-sm" />
               <span className="text-sm">
-                {new Date().getFullYear()} EventHub. All rights reserved.
+                {new Date().getFullYear()} CampusConnect. All rights reserved.
               </span>
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <Link to="/privacy" className="hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-white transition-colors">
-                Terms of Service
-              </Link>
-              <Link to="/cookies" className="hover:text-white transition-colors">
-                Cookie Policy
-              </Link>
             </div>
           </div>
         </div>

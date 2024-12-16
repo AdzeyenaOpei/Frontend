@@ -5,23 +5,15 @@ import { toast } from "react-toastify";
 
 export default function EventForm() {
   const { user } = useContext(UserContext);
+  // console.log(`user:`, user);
   const [formData, setFormData] = useState({
-    owner: user ? user.name : "",
-    title: "",
-    description: "",
-    organizedBy: "",
-    eventDate: "",
-    eventTime: "",
-    location: "",
-    image: null,
+    user_id: user?.id,
+    event_name: "",
+    available_seats: "",
+    event_date: "",
+    event_time: "",
+    location: ""
   });
-
-  const handleImageUpload = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,24 +34,23 @@ export default function EventForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!isValidDate(formData.eventDate) || !isValidTime(formData.eventTime)) {
-      toast.error("Invalid date or time");
+    if (!user) {
+      toast.error("Please login to create an event");
       return;
     }
 
-    const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
-    });
+    if (!isValidDate(formData.event_date) || !isValidTime(formData.event_time)) {
+      toast.error("Invalid date or time");
+      return;
+    } 
+    // let data = new FormData();
+    // Object.entries(formData).forEach(([key, value]) => {
+    //   data.append(key, value);
+    // });
+    // console.log(`data:`, formData);
 
     try {
-      const response = await axios.post("/createEvent", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      });
+      const response = await axios.post("/createEvent", formData);
       toast.success(response.data.message || "Event created successfully!");
       console.log("Event created successfully:", response.data);
     } catch (error) {
@@ -75,36 +66,15 @@ export default function EventForm() {
 
   return (
     <div className="max-w-lg mx-auto my-10 p-8 bg-white shadow-lg rounded-lg">
-      <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">Post an Event</h1>
+        <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">Create an Event</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="flex flex-col">
-          <label className="mb-2 text-gray-700 font-medium">Title</label>
+          <label className="mb-2 text-gray-700 font-medium">Event Name</label>
           <input
             type="text"
-            name="title"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-2 text-gray-700 font-medium">Organized By</label>
-          <input
-            type="text"
-            name="organizedBy"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={formData.organizedBy}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-2 text-gray-700 font-medium">Description</label>
-          <textarea
-            name="description"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={formData.description}
+            name="event_name"
+            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-500"
+            value={formData.event_name}
             onChange={handleChange}
             required
           />
@@ -113,9 +83,9 @@ export default function EventForm() {
           <label className="mb-2 text-gray-700 font-medium">Event Date</label>
           <input
             type="date"
-            name="eventDate"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={formData.eventDate}
+            name="event_date"
+            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-500"
+            value={formData.event_date}
             onChange={handleChange}
             required
           />
@@ -124,9 +94,9 @@ export default function EventForm() {
           <label className="mb-2 text-gray-700 font-medium">Event Time</label>
           <input
             type="time"
-            name="eventTime"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={formData.eventTime}
+            name="event_time"
+            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-500"
+            value={formData.event_time}
             onChange={handleChange}
             required
           />
@@ -136,19 +106,22 @@ export default function EventForm() {
           <input
             type="text"
             name="location"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-500"
             value={formData.location}
             onChange={handleChange}
             required
           />
         </div>
         <div className="flex flex-col">
-          <label className="mb-2 text-gray-700 font-medium">Image</label>
+          <label className="mb-2 text-gray-700 font-medium">Available Seats</label>
           <input
-            type="file"
-            name="image"
-            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleImageUpload}
+            type="number"
+            name="available_seats"
+            min="0"
+            className="p-4 rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-500"
+            value={formData.available_seats}
+            onChange={handleChange}
+            required
           />
         </div>
         <button

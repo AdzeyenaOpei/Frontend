@@ -5,14 +5,20 @@ import axios from "axios";
 import Notification from "../pages/Notification";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
+import Select from 'react-select';
 export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [preferences, setPreferences] = useState({});
   const [notification, setNotification] = useState({ message: "", type: "" });
+  const options = [
+    { label: "Workshop", value: "Workshop" },
+    { label: "Seminar", value: "Seminar" },
+    { label: "Club Activities", value: "Club activities" },
+  ]
 
   async function registerUser(ev) {
     ev.preventDefault();
@@ -27,7 +33,8 @@ export default function RegisterPage() {
         name,
         email,
         password,
-        role: "user", // Default role
+        role: "user",
+        preferences,
       });
       setNotification({ message: "Registration Successful!", type: "success" });
       setRedirect(true);
@@ -46,6 +53,11 @@ export default function RegisterPage() {
     }
   }
 
+  const handlePrefences = (selectedOptions) =>{
+    const selectedValues = selectedOptions.map(option => option.value);
+    setPreferences(selectedValues);
+  }
+
   if (redirect) {
     return <Navigate to={"/login"} />;
   }
@@ -54,7 +66,7 @@ export default function RegisterPage() {
     <div className="flex w-full h-screen justify-center items-center bg-gradient-to-br from-purple-500 via-pink-500 to-white">
       <Notification message={notification.message} type={notification.type} />
       <div className="bg-white w-full sm:w-full md:w-1/2 lg:w-1/3 px-7 py-10 rounded-xl shadow-lg">
-        <form className="flex flex-col w-auto items-center" onSubmit={registerUser}>
+        <form className="flex flex-col w-auto gap-2 items-center" onSubmit={registerUser}>
           <h1 className="px-3 font-extrabold mb-6 text-primarydark text-3xl text-center">Sign Up</h1>
           <div className="input mb-4 w-full">
             <input
@@ -92,7 +104,8 @@ export default function RegisterPage() {
               onChange={(ev) => setConfirmPassword(ev.target.value)}
             />
           </div>
-          <div className="w-full mb-4">
+            <Select isMulti options={options} onChange={handlePrefences} className="w-full" />
+            <div className="w-full mb-4">
             <button type="submit" className="primary w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-md shadow-md hover:opacity-90 transition-opacity">
               Create Account
             </button>
@@ -101,11 +114,6 @@ export default function RegisterPage() {
             <Link to={"/login"} className="w-full mr-2">
               <button className="text-black w-full py-2 bg-gray-200 rounded-md font-bold hover:bg-gray-300">
                 Sign In
-              </button>
-            </Link>
-            <Link to={"/register"} className="w-full ml-2">
-              <button className="text-white w-full py-2 bg-primary rounded-md font-bold hover:bg-primarydark">
-                Sign Up
               </button>
             </Link>
           </div>

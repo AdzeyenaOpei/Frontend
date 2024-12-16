@@ -10,11 +10,10 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <h1 className="text-5xl font-bold leading-tight">
-              Event Management Software That Works For You
+              CampusConnect
             </h1>
             <p className="text-xl">
               The complete solution for event planners, venues, and organizers. 
-              Manage bookings, track attendance, and grow your business.
             </p>
             <div className="flex gap-4">
               <Link to="/events">
@@ -22,7 +21,7 @@ export default function LandingPage() {
                   View Events
                 </button>
               </Link>
-              <Link to="/pricing">
+              <Link to="/createevent">
                 <button className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 border border-white">
                   Add Event
                 </button>
@@ -31,7 +30,7 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:block">
             <img 
-              src="/academic-city-ghana.jpg" 
+              src="./Api-Images/academic-city-ghana.jpg" 
               alt="Dashboard Preview" 
               className="rounded-lg shadow-xl"
             />
@@ -48,7 +47,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center space-y-4">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                <img src="/assets/calendar-icon.png" alt="Calendar" className="w-8 h-8" />
+                <img src="./Api-Images/Smart.jpg" alt="Calendar" className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold">Smart Scheduling</h3>
               <p className="text-gray-600">
@@ -57,7 +56,7 @@ export default function LandingPage() {
             </div>
             <div className="text-center space-y-4">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                <img src="/Public/Smart.png" alt="Booking" className="w-8 h-8" />
+                <img src="./Api-Images/Seamless.png" alt="Booking" className="w-8 h-8" />
               </div>
 
               <h3 className="text-xl font-bold">Seamless Bookings</h3>
@@ -67,7 +66,7 @@ export default function LandingPage() {
             </div>
             <div className="text-center space-y-4">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                <img src="/assets/reports-icon.png" alt="Reports" className="w-8 h-8" />
+                <img src="./Api-Images/Detailed.png" alt="Reports" className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold">Detailed Analytics</h3>
               <p className="text-gray-600">
@@ -99,10 +98,6 @@ export default function LandingPage() {
                 description: "Handle registrations, check-ins, and communications efficiently"
               },
               {
-                title: "Financial Tracking",
-                description: "Monitor budgets, expenses, and revenue streams"
-              },
-              {
                 title: "Marketing Tools",
                 description: "Promote events and track campaign performance"
               },
@@ -129,22 +124,10 @@ export default function LandingPage() {
           <p className="text-xl mb-8">
             Join thousands of successful event organizers who trust our platform
           </p>
-          <div className="flex justify-center gap-6">
-            <Link to="/demo">
-              <button className="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100">
-                Schedule a Demo
-              </button>
-            </Link>
-            <Link to="/contact">
-              <button className="px-8 py-4 bg-transparent border-2 border-white font-bold rounded-lg hover:bg-blue-700">
-                Contact Sales
-              </button>
-            </Link>
-          </div>
         </div>
       </div>
 
-      <Footer />
+      
     </div>
   );
 }
