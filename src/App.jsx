@@ -16,7 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import ForgotPassword from "./pages/ForgotPassword";
 
 // Configure Axios
-axios.defaults.baseURL = 'http://localhost:4000/';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:4000/';
 axios.defaults.withCredentials = true;
 
 function App() {
