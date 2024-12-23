@@ -30,7 +30,7 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:block">
             <img 
-              src="./assets/Api-Images/academic-city-ghana.jpg" 
+              src="academic-city-ghana.jpg" 
               alt="Dashboard Preview" 
               className="rounded-lg shadow-xl"
             />
@@ -47,7 +47,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center space-y-4">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                <img src="./assets/Api-Images/Smart.jpg" alt="Calendar" className="w-8 h-8" />
+                <img src="Smart.jpg" alt="Calendar" className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold">Smart Scheduling</h3>
               <p className="text-gray-600">
@@ -56,7 +56,7 @@ export default function LandingPage() {
             </div>
             <div className="text-center space-y-4">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                <img src="./assets/Api-Images/Seamless.png" alt="Booking" className="w-8 h-8" />
+                <img src="seamless.png" alt="Booking" className="w-8 h-8" />
               </div>
 
               <h3 className="text-xl font-bold">Seamless Bookings</h3>
@@ -66,7 +66,7 @@ export default function LandingPage() {
             </div>
             <div className="text-center space-y-4">
               <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                <img src="./assets/Api-Images/Detailed.png" alt="Reports" className="w-8 h-8" />
+                <img src="detailed.png" alt="Reports" className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-bold">Detailed Analytics</h3>
               <p className="text-gray-600">

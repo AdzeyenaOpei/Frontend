@@ -9,9 +9,11 @@ export default function CalendarView() {
   const [events, setEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [newEvent, setNewEvent] = useState({
-    title: "",
-    start: "",
-    end: ""
+    event_name: "",
+    event_date: "",
+    event_time: "",
+    location: "",
+    available_seats: 0
   });
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function CalendarView() {
     try {
       const response = await axios.post("/events", newEvent);
       setEvents([...events, response.data]);
-      setNewEvent({ title: "", start: "", end: "" });
+      setNewEvent({ event_name: "", event_date: "", event_time: "", location: "", available_seats: 0 });
     } catch (error) {
       console.error("Error adding event:", error);
     }
@@ -48,39 +50,11 @@ export default function CalendarView() {
     setSelectedDate(date);
   };
 
+  // console.log(events);
+
   return (
-    <div className="container mx-auto my-8 p-8">
+    <div className=" mx-auto my-8 p-8">
       {/* Event Creation Form */}
-      <div className="mb-8 bg-white rounded-xl shadow-lg p-6">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">Add New Event</h2>
-        <div className="space-y-4">
-          <input 
-            type="text" 
-            placeholder="Add Title" 
-            value={newEvent.title}
-            onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input 
-            type="datetime-local" 
-            value={newEvent.start}
-            onChange={(e) => setNewEvent({ ...newEvent, start: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input 
-            type="datetime-local" 
-            value={newEvent.end}
-            onChange={(e) => setNewEvent({ ...newEvent, end: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button 
-            onClick={handleAddEvent}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-          >
-            Add Event
-          </button>
-        </div>
-      </div>
 
       {/* Calendar View */}
       <div className="bg-white rounded-xl shadow-2xl">
@@ -140,15 +114,15 @@ export default function CalendarView() {
                     {events
                       .filter(
                         (event) =>
-                          format(new Date(event.start), "yyyy-MM-dd") === format(date, "yyyy-MM-dd")
+                          format(new Date(event.event_date.split("T")[0]), "yyyy-MM-dd") === format(date, "yyyy-MM-dd")
                       )
                       .map((event) => (
                         <Link
-                          key={event._id}
-                          to={"/event/" + event._id}
+                          key={event.id}
+                          to={"/event/" + event.id}
                           className="block text-xs p-1 rounded bg-blue-100 text-blue-700 hover:bg-blue-200 transition-colors truncate"
                         >
-                          {event.title}
+                          {event.event_name}
                         </Link>
                       ))}
                   </div>
