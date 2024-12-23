@@ -37,20 +37,7 @@ export default function Header() {
             </Link>
 
             {/* Search Bar */}
-            <form onSubmit={handleSearch} className="hidden md:flex items-center">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search events..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-white/20 text-white placeholder-gray-300 px-4 py-2 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 w-64"
-                />
-                <button type="submit" className="absolute right-3 top-2.5">
-                  <FaSearch className="text-gray-300 hover:text-white" />
-                </button>
-              </div>
-            </form>
+            
           </div>
 
           {/* Navigation Links */}
